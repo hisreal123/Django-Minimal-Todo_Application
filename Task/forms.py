@@ -11,3 +11,10 @@ class TaskForm(forms.ModelForm):
         model = Task
 
         fields = ['task']
+
+
+class UpdateForm(forms.ModelForm):
+    class Meta:
+        model = Task
+
+        fields = ['task', 'complete']

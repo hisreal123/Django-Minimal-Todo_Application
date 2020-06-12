@@ -2,7 +2,6 @@
 {% load crispy_forms_tags %}
 
 {% block content %}
-
 <div class="ctn">
     <form action="" method="POST">
         <div class="form-group">
@@ -15,18 +14,34 @@
     <!-- design starts here  -->
     <div class="ctnTask p-2">
         {% for task  in tasks %}
-            <ul class="nav">
+            <ol class="nav">
+                {% if task.complete == True %}
+                <li class="list-item mb-2 d-flex justify-content-between w-100">
+                    <div class="wrap">
+                        <div class="round mr-4 mt-1  bg-primary "> </div>
+                        <p class="text-left float-left text-muted"> {{ task.task }} - completed  </p>
+                    </div>
+
+                    <div class="wrap2">
+                        <form action=" {% url 'task-delete' task.id %}" method="POST">
+                            {% csrf_token %}
+                            <button name="" id="" class="btn btn-sm btn-primary " href="#" role="button">del</button>
+                        </form>
+                    </div>
+                </li>
+                {% else %}
                 <li class="list-item mb-2 d-flex justify-content-between w-100">
                     <div class="wrap">
                         <div class="round mr-4 mt-1 "> </div>
-                        <p class="text-left float-left"><a href="" class="text-left" >{{task.task }}</a></p>
+                        <p class="text-left float-left"><a href="{% url 'task-update' task.id %}" class="text-left" >{{task.task }}</a></p>
                     </div>
                     <form action=" {% url 'task-delete' task.id %}" method="POST">
                         {% csrf_token %}
                         <button name="" id="" class="btn btn-sm btn-primary " href="#" role="button">del</button>
                     </form>
                 </li>
-            </ul>
+                {% endif %}
+            </ol>
         {% endfor %}
     </div>
 </div>
