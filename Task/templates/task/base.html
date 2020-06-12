@@ -1,0 +1,41 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Todo App</title>
+    <!-- <link rel="icon" type="image/png" href="{% static 'task/assets/Titleicon.png' %}"> -->
+
+    <link rel="stylesheet" type="text/css" href="{% static 'task/bootstrap4/css/bootstrap.min.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'task/fontAwesome/css/all.min.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'task/css/main.css'%}">      
+</head>
+<body>
+
+    <div class="App d-flex align-items-center">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-4"></div>
+                <div class="col-md-4 AppCtnBdy p-2">
+                    <div class="tp mb-4  shadow-lg p-3 bg-primary">
+                        <h5 class="text-center text-white"> Todo Application </h5>
+                    </div>
+                    <div class="bd shadow-lg pt-0 p-2 position-relative">
+                        {% block content %}
+                        {% endblock content %}
+                    </div>
+                </div>
+                <div class="col-md-4"></div>
+            </div>
+        </div>
+    </div>
+    
+
+    <script src=" {% static 'task/js/bootstrap.min.js' %}"></script>
+    <script src=" {% static 'task/js/jquery-3.3.1.min.js' %}"></script>
+    <script src=" {% static 'task/js/main.js' %}"></script> 
+
+</body>
+</html>

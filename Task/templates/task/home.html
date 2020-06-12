@@ -1,0 +1,42 @@
+{% extends "task/base.html" %}
+{% load crispy_forms_tags %}
+
+{% block content %}
+
+<div class="ctn">
+    <form action="" method="POST">
+        <div class="form-group">
+            {% csrf_token %}
+            {{ form | crispy }}
+        </div>
+        <button type="submit" class="btn btn-primary btn-md position-absolute shadow" style="top: 95%; left: 40%; ">New Task </button>
+    </form>
+
+    <!-- design starts here  -->
+    <div class="ctnTask p-2">
+        {% for task  in tasks %}
+            <ul class="nav">
+                <li class="list-item mb-2 d-flex justify-content-between w-100">
+                    <div class="wrap">
+                        <div class="round mr-4 mt-1 "> </div>
+                        <p class="text-left float-left"><a href="" class="text-left" >{{task.task }}</a></p>
+                    </div>
+                    <form action=" {% url 'task-delete' task.id %}" method="POST">
+                        {% csrf_token %}
+                        <button name="" id="" class="btn btn-sm btn-primary " href="#" role="button">del</button>
+                    </form>
+                </li>
+            </ul>
+        {% endfor %}
+    </div>
+</div>
+
+<div class="modal">
+    <form action=" " method="POST">
+        {% csrf_token %}
+        <button name="" id="" class="btn btn-sm btn-primary " href="#" role="button">update</button>
+        <button name="" id="" class="btn btn-sm btn-primary " href="#" role="button">del</button>
+    </form>
+</div>
+{% endblock content %}
+
